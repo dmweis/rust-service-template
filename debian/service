@@ -1,0 +1,16 @@
+[Unit]
+Description=template
+After=network-online.target nss-lookup.target
+Wants=network-online.target
+
+[Service]
+User=template
+DynamicUser=yes
+StateDirectory=template
+Type=simple
+Restart=on-failure
+RestartSec=5s
+ExecStart=/usr/bin/template --config /etc/template/settings
+
+[Install]
+WantedBy=default.target
